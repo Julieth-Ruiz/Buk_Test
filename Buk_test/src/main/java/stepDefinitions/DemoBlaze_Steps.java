@@ -56,7 +56,6 @@ public class DemoBlaze_Steps extends BasePage {
                 Assert.isTrue(productElement.isDisplayed(), "Product " + brand + " is not displayed");
             }
 
-            System.out.println("Verified products for laptops category");
             waitBetweenSteps();
 
         }
@@ -85,6 +84,16 @@ public class DemoBlaze_Steps extends BasePage {
             clickElement(selector);
         }
 
+        @Then("I complete all fills in the form")
+        public void i_complete_all_fills_in_the_form(List<Map<String, String>> contactFormData) {
+            for (Map<String, String> data : contactFormData) {
+                By input = elements.getSelector(data.get("input"));
+                String value = data.get("value");
+                write(input, value);
+            }
+            waitBetweenSteps();
+        }
+
         @Then("I click on the purchase button")
         public void i_click_on_the_purchase_button()  {
             By selector = elements.getSelector("purchase_button");
@@ -96,16 +105,6 @@ public class DemoBlaze_Steps extends BasePage {
         @When("I click on the contact link")
         public void i_click_on_the_contact_link() {
             goToLinkText("Contact");
-        }
-
-        @Then("I complete all fills in the form")
-        public void i_complete_all_fills_in_the_form(List<Map<String, String>> contactFormData) {
-            for (Map<String, String> data : contactFormData) {
-                By input = elements.getSelector(data.get("input"));
-                String value = data.get("value");
-                write(input, value);
-            }
-            waitBetweenSteps();
         }
 
         @Then("I click on the send message")

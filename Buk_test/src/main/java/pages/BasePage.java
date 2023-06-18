@@ -39,23 +39,23 @@ public class BasePage {
         }
     }
 
-    public void goToLinkText (String value){
-        driver.findElement(By.linkText(value)).click();
+    public void goToLinkText (String elementName){
+        driver.findElement(By.linkText(elementName)).click();
     }
 
 
-    private WebElement Find(By selector){
+    private WebElement findSelectorAfterRender(By selector){
        return wait.until(ExpectedConditions.presenceOfElementLocated(selector));
     }
 
 
     public void clickElement(By selector){
-        Find(selector).click();
+        findSelectorAfterRender(selector).click();
     }
 
     public void write(By selector, String textToWrite){
-        Find(selector).clear();
-        Find(selector).sendKeys(textToWrite);
+        findSelectorAfterRender(selector).clear();
+        findSelectorAfterRender(selector).sendKeys(textToWrite);
     }
 
 

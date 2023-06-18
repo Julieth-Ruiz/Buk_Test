@@ -26,8 +26,8 @@ public class HomeElements {
         selectors.put("order_button", By.xpath("//*[@id='page-wrapper']/div/div[2]/button"));
     }
 
-    public By getSelector(String selector) {
-        return selectors.get(selector);
+    public By getSelector(String selector)   {
+            return selectors.get(selector);
     }
 }
 
